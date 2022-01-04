@@ -1,0 +1,33 @@
+
+Clase 3. React 1.
+
+    - NodeJS: npm, yarn; npx create-react-app appName
+    - yarn start 
+    - src: project content: styles, components, App.js, index.js (don't touch!!)
+        elements - body>div id="root"
+        SPA - single page application (React)
+    - src/{pages, components, styles}
+    - src/pages/Index.jsx  rafce, anonymous functions (arrow functions)
+    - Import Index on App.js div>Index
+    
+    - Install react-router-dom (always goes)
+    - Copy boilerplate from documentation 
+            Router>Switch>Route path='/'
+    - src/pages/About.jsx
+    - Import About on App.js div>Index
+            Router>Switch>Route path='/about'
+    - Change Switch with Routes and get rid of Router
+            Routes>Route
+    - src/styles/styles.css
+    - Tailwindcss
+
+    - Hooks: predefined functions, useState, useEffect
+    - useEffect, live sums
+
+    - components, graphic e.g.  button.jsx, functional e.g. Sidebar.jsx, layout
+    - src/Layout/Layout.jsx, import Sidebar
+            children props : ({ children }) =>  {
+                {children}                
+            }
+        Layouts always have children
+    - On App.js: Layout>Index
