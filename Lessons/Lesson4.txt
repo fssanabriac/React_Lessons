@@ -1,0 +1,98 @@
+
+Lesson 4. React review 2.
+
+    - props and children. The first are for components that doesn't have more
+      components inside them. This are like the attributes of an HTML tag, and
+      are self-clossing. On the other hand you use children when your components 
+      is parent of one or more components, and has to have an opening and
+      closing tags.
+
+    - Dependencies. When a new major version is released, of some of the
+      packages used, it is necessary to refactor the code, because there could
+      be some breaking changes. You can find a list of all dependencies used in your
+      project on package.json. New changes implies a learning curve in order to
+      familiarize with new features.
+
+    - react-router-dom. BrowserRouter envolves content on App.js.
+      BrowserRouter in App.jsx instead of index.js recommended. import
+      BrowserRouter, Routes and Route on App.js
+
+            <Routes>
+                <Route path='/' element={<Index />} />
+                <Route path='/about' element={<About />} />
+                <Route path='/admin' element={<IndexAdmin />} />
+                <Route path='/admin/users' element={<Users />} />
+            </Routes>
+
+    - Create /folder/Index.jsx every time a new division is created on pages,
+      e.g. admin, users, etc.
+
+    - Layout. This are the most common place where {children} are used. Create 
+    layout/LayoutAdmin.jsx. Below is the new way of routing different pages on v6
+    of react-router-dom
+
+            <Route path='/admin' element={<LayoutAdmin />} >
+                <Route path='' element={<IndexAdmin />} />
+                <Route path='users' element={<Users />} />
+            </Route>
+
+      Import Outlet from react-router-dom (instead of children) in the Layout
+      code page. change {children} for <Outlet />. no need for {children} in
+      the declaration of arrow function.
+
+    - dynamic routes. pages/user/GenericUser.jsx
+
+            <Route path='/admin' element={<LayoutAdmin />} >
+                <Route path='' element={<IndexAdmin />} />
+                <Route path='users' element={<Users />} />
+                <Route path='users/:userName' element={<GenericUser />}
+            </Route>
+
+        GenericUser code page: import useParams from react-router-dom.
+            
+            let params = useParams();
+            return <div> {params.userName} page </div>
+
+    # prop hell -> context hook
+
+    - src/context/user.js 
+
+            import createContext and useContext from react
+
+            export const UserContext = createContext(null);
+
+            export const useUser = () => {
+                return useContext(UserContext);
+            };
+
+     useUser is a personalized hook. 
+
+     import UserContext on App.jsx
+            
+            fucntion App() {
+                const [userData, setUserdata] = useState({nombre: 'name'});
+            
+                return (
+                    <UserContext.Provider value=({useDate, setUserData})>
+                        <BrowserRouter> ...
+                        </BrowserRouter>
+                    </UserContext.Provider >
+                    )
+            }
+
+     Usage on a component/page: on any page:
+            
+            const {userData, setUserData} = useUser(); //must import useUser from the context
+            // directory
+
+            // use setUserData to reload value of useData
+            setUserData(...userData, nombre: 'newName');
+
+    - dark mode. Can be found on the configuration page (given it exits). Use
+      ternary if to reload button text. 
+
+      - A useContext hook can wrap another context, e.g. UserContext.Provider
+        could be wrapped by DarkContext.Provider
+
+    - Some git workflow. Pull from base repo and push to own repo, adding two
+      the two remotes (own as origin).

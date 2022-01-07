@@ -1,0 +1,68 @@
+
+Clase 3. React 1.
+
+    - A React App is a collection of files, .js, .jsx, .css, etc. You can
+      create a new project with the command npx create-react-app appName.
+
+    - React is a SPA - single page application. 
+
+    - You have to have NodeJS on your machine. It's package managers are npm
+      and yarn, the last is recommended. 
+
+
+    - To view your project in a browser use the command yarn start. This
+      starts providing the code on localhost/3000.
+
+    - Development will be done primarly on the src directory. The project
+      content includes the following subdirectories: styles, components,
+      hooks, Layouts, etc, and also some importatn files like App.js, index.js
+      (don't touch!!).
+      
+      
+        elements - body>div id="root"
+
+    - Create src/{pages, components, styles}
+
+    - Create src/pages/Index.jsx. Use the abbr rafce in VSCode to create a new
+      function. It is preferred to use  anonymous functions (arrow functions).
+
+    - Import Index on App.js div>Index
+    
+    - Install react-router-dom (always needed)
+
+    - Copy boilerplate from documentation 
+
+//            <Router>
+//                <Switch>
+//                   <Route path='/'/>
+//                </Switch>
+//            </Router>
+// used before v6.x
+
+    - src/pages/About.jsx
+
+    - Import About on App.js div>Index
+            Router>Switch>Route path='/about'
+
+    - Change Switch with Routes and get rid of Router (react-router-dom v6.x)
+            Routes>Route
+
+    - Create src/styles/styles.css
+    - To add style to the React app there are a few options, e.g. Bootstrap,
+      MaterialUI and Tailwindcss. The last follows a functional approach, so
+      it is recommended
+
+    - React Hooks: predefined functions, useState, useEffect
+    - useEffect, live sums
+
+    - Development should follow a modular approach, so is useful to work with
+      components. This can be of two kinds: graphic e.g.  button.jsx, and
+      functional e.g. Sidebar.jsx, Layout.jsx
+
+    - Create src/Layout/Layout.jsx, import Sidebar
+
+            children props : ({ children }) =>  {
+                {children}                
+            }
+        Layouts always have children
+    - On App.js: Layout>Index
